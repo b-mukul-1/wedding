@@ -882,6 +882,24 @@ button:focus-visible, a:focus-visible { outline: 2px solid #f0c060; outline-offs
   .action-bar a, .action-bar button { font-size: 8px; padding: 10px 12px; min-height: 42px; }
 }
 
+/* ── Mobile thermal & battery performance ──────────────────── */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+  .story-top.minimal,
+  .editorial-sheet,
+  .royal-copy,
+  .floating-audio-dock,
+  .tile-sound-pill,
+  .action-bar button,
+  .action-bar a {
+    -webkit-backdrop-filter: blur(6px) !important;
+    backdrop-filter: blur(6px) !important;
+  }
+}
+
 /* ── WebGL canvas layers ───────────────────────────────────── */
 .cinematic-webgl {
   position: absolute;

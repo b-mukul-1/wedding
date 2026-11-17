@@ -23,7 +23,6 @@ export default function Royal() {
   const root = useRef(null);
   const stageRef = useRef(null);
   const [burst, setBurst] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [litDiyas, setLitDiyas] = useState([true, true, true, true, true, true, true]);
   const { play, setTrackTheme } = useSound();
   const active = useStoryProgress(root, CHAPTERS.royal);
@@ -31,17 +30,6 @@ export default function Royal() {
   useEffect(() => {
     setTrackTheme('royal');
   }, [setTrackTheme]);
-
-  // Track scroll progress for 3D camera
-  useEffect(() => {
-    const handleScroll = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total <= 0) return;
-      setScrollProgress(Math.min(1, Math.max(0, window.scrollY / total)));
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useStoryScene(root, ({ gsap, ScrollTrigger, reduced }) => {
     if (reduced) return;
@@ -130,7 +118,7 @@ export default function Royal() {
   return (
     <div className="royal-world" ref={root}>
       {/* 3D WebGL Cinema Stage */}
-      <ThreeCinemaStage ref={stageRef} scrollProgress={scrollProgress} litDiyas={litDiyas} />
+      <ThreeCinemaStage ref={stageRef} litDiyas={litDiyas} />
 
       {/* Navigation Rail & Header */}
       <StoryChrome theme="royal" active={active} chapters={CHAPTERS.royal} chapterIds={IDs} />
@@ -195,11 +183,11 @@ export default function Royal() {
         <section className="royal-scene royal-welcome" id={IDs[2]} data-chapter>
           <div className="royal-stage">
             <div className="royal-greeter left">
-              <img src="/art/attendant-rose.png" alt="Flower welcome attendant" />
+              <img src="/art/attendant-rose.webp" alt="Flower welcome attendant" />
               <div className="royal-petal-stream">✿ ❀ ✿ ✦</div>
             </div>
             <div className="royal-greeter right">
-              <img src="/art/attendant-saffron.png" alt="Flower welcome attendant" />
+              <img src="/art/attendant-saffron.webp" alt="Flower welcome attendant" />
               <div className="royal-petal-stream">✦ ✿ ❀ ✿</div>
             </div>
             <PetalCinema density={1.6} />
@@ -235,7 +223,7 @@ export default function Royal() {
           <div className="royal-stage">
             <div className="royal-portrait-arch" />
             <div className="royal-portrait-bride">
-              <img src="/art/bride.png" alt="Bride Vidhi in royal maroon lehenga" />
+              <img src="/art/bride.webp" alt="Bride Vidhi in royal maroon lehenga" />
             </div>
 
             <div className="royal-copy royal-portrait-copy bride">
@@ -258,7 +246,7 @@ export default function Royal() {
           <div className="royal-stage">
             <div className="royal-portrait-arch" />
             <div className="royal-portrait-groom">
-              <img src="/art/groom.png" alt="Groom Yash in ivory sherwani" />
+              <img src="/art/groom.webp" alt="Groom Yash in ivory sherwani" />
             </div>
 
             <div className="royal-copy royal-portrait-copy groom">

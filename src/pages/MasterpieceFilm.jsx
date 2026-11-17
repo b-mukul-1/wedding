@@ -20,22 +20,8 @@ if (typeof window !== 'undefined') {
 export default function MasterpieceFilm() {
   const stageRef = useRef(null);
   const containerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [litDiyas, setLitDiyas] = useState([false, false, false, false, false, false, false]);
   const { playChime } = useAudioEngine();
-
-  // Scroll Progress listener to feed ThreeCinemaStage camera
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll <= 0) return;
-      const progress = Math.min(1, Math.max(0, window.scrollY / totalScroll));
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // GSAP Entrance Animations
   useEffect(() => {
@@ -113,7 +99,6 @@ export default function MasterpieceFilm() {
         {/* 3D WebGL Cinema Canvas */}
         <ThreeCinemaStage
           ref={stageRef}
-          scrollProgress={scrollProgress}
           litDiyas={litDiyas}
         />
 

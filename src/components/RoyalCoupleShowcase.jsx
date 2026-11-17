@@ -50,7 +50,7 @@ export default function RoyalCoupleShowcase() {
           <div className="frame-image-wrapper">
             <div className="frame-glow-backlight" />
             <img
-              src="/art/bride.png"
+              src="/art/bride.webp"
               alt="Artistic portrait illustration of bride Vidhi in a royal lehenga"
               className="portrait-img"
               loading="lazy"
@@ -94,7 +94,7 @@ export default function RoyalCoupleShowcase() {
           <div className="frame-image-wrapper">
             <div className="frame-glow-backlight" />
             <img
-              src="/art/groom.png"
+              src="/art/groom.webp"
               alt="Artistic portrait illustration of groom Yash in a royal sherwani"
               className="portrait-img"
               loading="lazy"

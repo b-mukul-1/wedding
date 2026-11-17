@@ -263,7 +263,7 @@ export default function Minimal() {
             <div className="figure-mat-border">
               <img
                 className="editorial-portrait-bride"
-                src="/art/bride-editorial.png"
+                src="/art/bride-editorial.webp"
                 alt="Portrait illustration of Vidhi, the bride"
               />
             </div>
@@ -311,7 +311,7 @@ export default function Minimal() {
             <div className="figure-mat-border">
               <img
                 className="editorial-portrait-groom"
-                src="/art/groom-editorial.png"
+                src="/art/groom-editorial.webp"
                 alt="Portrait illustration of Yash, the groom"
               />
             </div>

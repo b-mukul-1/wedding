@@ -9,16 +9,28 @@ if (typeof window !== 'undefined') {
 
 export default function SmoothScroll({ children }) {
   useEffect(() => {
-    // Respect reduced motion settings
+    // Respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
 
+    // Bypass Lenis entirely on touch/mobile devices:
+    // iOS Safari and Android already have native hardware-accelerated 120Hz momentum scrolling.
+    // Intercepting touch scrolling with JS creates continuous CPU load, thermal heating, and lag.
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches);
+
+    if (isTouchDevice) {
+      return;
+    }
+
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.8,
       infinite: false,
     });
 
@@ -29,7 +41,8 @@ export default function SmoothScroll({ children }) {
     };
 
     gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
+    // Standard lag smoothing prevents CPU death spirals on low-power or battery-saver devices
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(tickerCallback);

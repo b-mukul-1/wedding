@@ -221,7 +221,7 @@ export default function Floral() {
             <div className="floral-portrait-circle" />
             <div className="floral-portrait-bride floral-portrait-bride-wrap">
               <div className="wreath-halo" />
-              <img src="/art/bride.png" alt="Illustrated bride Vidhi in floral garden" />
+              <img src="/art/bride.webp" alt="Illustrated bride Vidhi in floral garden" />
             </div>
 
             <div className="floral-reveal floral-portrait-text">
@@ -245,7 +245,7 @@ export default function Floral() {
             <div className="floral-portrait-circle" />
             <div className="floral-portrait-groom floral-portrait-groom-wrap">
               <div className="wreath-halo" />
-              <img src="/art/groom.png" alt="Illustrated groom Yash in floral garden" />
+              <img src="/art/groom.webp" alt="Illustrated groom Yash in floral garden" />
             </div>
 
             <div className="floral-reveal floral-portrait-text">
@@ -269,10 +269,10 @@ export default function Floral() {
             <div className="floral-union-sun" />
             <div className="floral-couple-wrap">
               <div className="floral-union-bride floral-couple-bride">
-                <img src="/art/bride.png" alt="Vidhi" />
+                <img src="/art/bride.webp" alt="Vidhi" />
               </div>
               <div className="floral-union-groom floral-couple-groom">
-                <img src="/art/groom.png" alt="Yash" />
+                <img src="/art/groom.webp" alt="Yash" />
               </div>
             </div>
 

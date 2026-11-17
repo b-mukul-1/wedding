@@ -2,25 +2,33 @@ import React, { useEffect, useRef } from 'react';
 
 /**
  * FairyDustCursor: Disney / Tinker Bell-inspired golden stardust & sparkler trail.
- * Renders glowing 4-point stars, golden embers, and twinkling magic dust with physics.
+ * High-performance: Only active on desktop devices with fine pointer (mouse/trackpad).
+ * Completely bypassed on touchscreens to preserve mobile battery and eliminate heating.
  */
 export default function FairyDustCursor() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Only enable on desktop mouse/fine pointers
+    if (
+      typeof window === 'undefined' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      window.matchMedia('(pointer: coarse)').matches ||
+      !window.matchMedia('(pointer: fine)').matches
+    ) {
       return;
     }
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
 
     let width = 0;
     let height = 0;
     let animId = 0;
     let particles = [];
+    let isRunning = false;
     let mouse = { x: -100, y: -100, prevX: -100, prevY: -100, speed: 0 };
 
     const colors = ['#ffffff', '#fff3c4', '#ffd700', '#fdbb2d', '#f69d3c', '#ff758c'];
@@ -35,20 +43,24 @@ export default function FairyDustCursor() {
     function addParticles(x, y, count = 2) {
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 2.2 + 0.5;
+        const speed = Math.random() * 2.0 + 0.5;
         particles.push({
-          x: x + (Math.random() - 0.5) * 8,
-          y: y + (Math.random() - 0.5) * 8,
+          x: x + (Math.random() - 0.5) * 6,
+          y: y + (Math.random() - 0.5) * 6,
           vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 0.6, // slight upward float
-          size: Math.random() * 3.8 + 1.2,
+          vy: Math.sin(angle) * speed - 0.5,
+          size: Math.random() * 3.2 + 1.0,
           color: colors[Math.floor(Math.random() * colors.length)],
           alpha: 1,
-          decay: Math.random() * 0.022 + 0.014,
+          decay: Math.random() * 0.025 + 0.018,
           isStar: Math.random() > 0.45,
           rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.12,
+          rotSpeed: (Math.random() - 0.5) * 0.1,
         });
+      }
+      if (!isRunning) {
+        isRunning = true;
+        animId = requestAnimationFrame(loop);
       }
     }
 
@@ -77,8 +89,8 @@ export default function FairyDustCursor() {
     }
 
     function onPointerMove(e) {
-      const clientX = e.clientX ?? (e.touches && e.touches[0]?.clientX);
-      const clientY = e.clientY ?? (e.touches && e.touches[0]?.clientY);
+      const clientX = e.clientX;
+      const clientY = e.clientY;
       if (clientX === undefined || clientY === undefined) return;
 
       const dx = clientX - mouse.prevX;
@@ -89,12 +101,17 @@ export default function FairyDustCursor() {
       mouse.prevX = clientX;
       mouse.prevY = clientY;
 
-      // Spawn more particles when moving faster
-      const count = Math.min(6, Math.max(1, Math.floor(mouse.speed / 4)));
+      const count = Math.min(4, Math.max(1, Math.floor(mouse.speed / 5)));
       addParticles(clientX, clientY, count);
     }
 
     function loop() {
+      if (particles.length === 0) {
+        ctx.clearRect(0, 0, width, height);
+        isRunning = false;
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = 'lighter';
 
@@ -102,8 +119,8 @@ export default function FairyDustCursor() {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.035; // gentle gravity
-        p.vx *= 0.985; // air drag
+        p.vy += 0.035;
+        p.vx *= 0.985;
         p.rotation += p.rotSpeed;
         p.alpha -= p.decay;
 
@@ -117,14 +134,12 @@ export default function FairyDustCursor() {
         ctx.rotate(p.rotation);
         ctx.globalAlpha = p.alpha;
         ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = p.size * 2.5;
 
         if (p.isStar) {
-          drawStar(ctx, 0, 0, 4, p.size * 1.5, p.size * 0.45);
+          drawStar(ctx, 0, 0, 4, p.size * 1.4, p.size * 0.4);
         } else {
           ctx.beginPath();
-          ctx.arc(0, 0, p.size * 0.75, 0, Math.PI * 2);
+          ctx.arc(0, 0, p.size * 0.7, 0, Math.PI * 2);
           ctx.fill();
         }
         ctx.restore();
@@ -135,18 +150,23 @@ export default function FairyDustCursor() {
 
     window.addEventListener('resize', resize, { passive: true });
     window.addEventListener('pointermove', onPointerMove, { passive: true });
-    window.addEventListener('touchmove', onPointerMove, { passive: true });
 
     resize();
-    loop();
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('touchmove', onPointerMove);
     };
   }, []);
+
+  // Return null on touch devices
+  if (
+    typeof window !== 'undefined' &&
+    (window.matchMedia('(pointer: coarse)').matches || !window.matchMedia('(pointer: fine)').matches)
+  ) {
+    return null;
+  }
 
   return (
     <canvas
