@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 510">
+<defs>
+<linearGradient id="hide" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9bec2"/><stop offset=".47" stop-color="#9c8b9e"/><stop offset="1" stop-color="#716b83"/></linearGradient>
+<linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5bd"/><stop offset=".46" stop-color="#d5a95f"/><stop offset="1" stop-color="#97643f"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c83859"/><stop offset=".5" stop-color="#8e1f42"/><stop offset="1" stop-color="#58132e"/></linearGradient>
+<pattern id="embroider" width="29" height="29" patternUnits="userSpaceOnUse"><path d="M15 3Q27 14 15 26Q3 14 15 3ZM3 15H27" fill="none" stroke="#ffd48a" stroke-width="1.4" opacity=".88"/><circle cx="15" cy="15" r="3" fill="#fff2bf"/></pattern>
+<filter id="shadow"><feGaussianBlur stdDeviation="7"/></filter></defs>
+<ellipse cx="304" cy="479" rx="239" ry="16" fill="#220f24" opacity=".25" filter="url(#shadow)"/>
+<!-- legs and toes -->
+<path d="M132 273Q127 336 135 457L205 456L222 329M356 320L377 460L450 458Q436 348 450 281" fill="url(#hide)" stroke="#6d667b" stroke-width="6"/>
+<path d="M136 453Q174 465 204 453M383 455Q419 468 446 455" stroke="#fae8d3" stroke-width="9" stroke-linecap="round"/>
+<path d="M171 455L171 437M408 455V439" stroke="#777083" stroke-width="3"/>
+<!-- body -->
+<path d="M95 181Q116 105 221 116Q343 124 405 188Q453 224 420 327Q352 364 231 342Q151 338 105 279Q76 228 95 181" fill="url(#hide)" stroke="#857587" stroke-width="7"/>
+<path d="M114 182Q186 112 326 164" fill="none" stroke="#f6e6db" stroke-width="10" opacity=".24"/>
+<!-- neck and face -->
+<path d="M392 185Q449 143 497 189Q545 230 534 291Q522 331 475 342Q455 339 452 316Q458 278 426 269Z" fill="url(#hide)" stroke="#716c84" stroke-width="7"/>
+<path d="M492 264Q554 287 560 357Q552 402 517 392Q508 377 522 369Q542 364 523 343Q507 321 490 315" fill="none" stroke="url(#hide)" stroke-width="51" stroke-linecap="round"/>
+<path d="M493 268Q537 293 538 351" fill="none" stroke="#e7cbd0" stroke-width="6" opacity=".45"/>
+<!-- ears -->
+<path d="M440 199Q398 157 376 207Q370 274 432 289Q464 274 462 232Z" fill="#a28b9a" stroke="#766d85" stroke-width="7"/>
+<path d="M431 212Q391 187 397 225Q405 259 434 266" fill="#d9a3ad" opacity=".8"/>
+<circle cx="492" cy="221" r="7" fill="#271f2f"/><circle cx="495" cy="219" r="2" fill="#fdf0df"/>
+<path d="M488 204Q501 195 513 207" fill="none" stroke="#6d4a63" stroke-width="5"/>
+<!-- tusks -->
+<path d="M511 286Q545 308 563 278Q555 323 526 331Q513 326 511 286" fill="#fff1d6" stroke="#cfbca6" stroke-width="3"/>
+<!-- anklets, decorations -->
+<path d="M142 423Q170 430 197 422M389 429Q422 437 441 425" stroke="url(#shine)" stroke-width="14" fill="none"/>
+<g fill="#f9cc74"><circle cx="153" cy="432" r="5"/><circle cx="177" cy="433" r="5"/><circle cx="405" cy="438" r="5"/><circle cx="427" cy="436" r="5"/></g>
+<!-- ceremonial saddle cloth -->
+<path d="M144 126Q284 85 396 166L404 329Q266 364 138 309Z" fill="url(#cloth)" stroke="url(#shine)" stroke-width="12"/>
+<path d="M144 126Q284 85 396 166L404 329Q266 364 138 309Z" fill="url(#embroider)" opacity=".9"/>
+<path d="M150 139Q271 102 389 176M146 298Q273 352 396 315" stroke="#ffe8a4" stroke-width="7" fill="none"/>
+<path d="M230 157Q273 131 318 163L336 254Q274 294 208 245Z" fill="#ab3153" stroke="#ffe5a6" stroke-width="6"/>
+<path d="M230 157Q273 131 318 163L336 254Q274 294 208 245Z" fill="url(#embroider)"/>
+<circle cx="274" cy="212" r="29" fill="none" stroke="#ffe9aa" stroke-width="6"/><text x="274" y="226" text-anchor="middle" font-family="serif" font-size="34" fill="#f7d89a">✦</text>
+<!-- headpiece -->
+<path d="M443 175Q484 154 528 193L522 213Q483 202 447 211Z" fill="url(#cloth)" stroke="#ffdf95" stroke-width="7"/>
+<path d="M483 168V126" stroke="url(#shine)" stroke-width="8"/><circle cx="483" cy="116" r="18" fill="url(#shine)"/><circle cx="483" cy="116" r="7" fill="#b02f50"/>
+<path d="M465 207L464 243M494 208L498 245M514 209L520 244" stroke="url(#shine)" stroke-width="5"/><circle cx="464" cy="245" r="7" fill="#ffd88b"/><circle cx="499" cy="247" r="7" fill="#ffd88b"/><circle cx="519" cy="244" r="7" fill="#ffd88b"/>
+<!-- ornamental howdah / canopy -->
+<path d="M204 115L209 88H345L355 127" fill="#b18157" stroke="url(#shine)" stroke-width="8"/>
+<path d="M187 83Q280 3 371 83Z" fill="url(#cloth)" stroke="url(#shine)" stroke-width="10"/>
+<path d="M206 81Q279 35 352 81" fill="none" stroke="#ffe3a1" stroke-width="3"/>
+<path d="M282 39V12" stroke="url(#shine)" stroke-width="7"/><circle cx="282" cy="9" r="9" fill="#f6d485"/>
+<g fill="#eac27b"><circle cx="218" cy="89" r="8"/><circle cx="247" cy="91" r="8"/><circle cx="279" cy="92" r="8"/><circle cx="312" cy="91" r="8"/><circle cx="344" cy="90" r="8"/></g>
+<!-- tail -->
+<path d="M99 210Q50 223 69 327" stroke="#83758a" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M68 326Q52 338 65 353Q86 340 68 326" fill="#544d62"/>
+</svg>

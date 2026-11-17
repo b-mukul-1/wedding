@@ -1,0 +1,1143 @@
+/* ============================================================
+   ENCHANTED GARDEN — Tangled / Brave / Frozen Botanical
+   Golden Hour · Monarch Wings · Cascading Rose Petals
+   ============================================================ */
+
+/* ── Root World ─────────────────────────────────────────────── */
+.floral-world {
+  --rose: #c0526a;
+  --coral: #e07858;
+  --peach: #fde6d2;
+  --sage: #5d7a62;
+  --gold: #f5c842;
+  --blush: #fff0e8;
+  --deep-green: #2c4a35;
+  background: #fff4ee;
+  color: #3a2228;
+  overflow: clip;
+}
+.floral-world main { position: relative; }
+
+/* ── Scene Scaffolding ──────────────────────────────────────── */
+.floral-section {
+  height: 155vh;
+  position: relative;
+  scroll-margin-top: 0;
+}
+.floral-stage {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  min-height: 620px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  isolation: isolate;
+  background: #fbe8dd;
+}
+/* Top & bottom cinematic vignettes */
+.floral-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 248, 235, 0.15) 0%,
+      transparent 25%,
+      transparent 72%,
+      rgba(100, 50, 40, 0.1) 100%
+    );
+}
+.floral-section:nth-of-type(3n) .floral-stage { background: #f8d4de; }
+
+/* ── Typography ─────────────────────────────────────────────── */
+.floral-world h2 {
+  font: 400 clamp(64px, 8vw, 128px) / 0.95 var(--head);
+  letter-spacing: -0.075em;
+  margin: 0 0 26px;
+  background: linear-gradient(135deg, #2a1420 0%, #7a2838 50%, #c0526a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.floral-world h2 em {
+  font: 400 clamp(72px, 10vw, 165px) / 0.84 var(--script);
+  display: inline-block;
+  margin-top: 14px;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #9a3850 0%, #d47090 50%, #f8b0c0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.floral-minilabel {
+  font: 700 8px var(--body);
+  letter-spacing: 0.3em;
+  color: #a04060;
+  display: block;
+  margin-bottom: 22px;
+}
+.floral-world p { font-family: var(--body); }
+.floral-reveal { position: relative; z-index: 9; }
+.floral-world .floral-reveal p:not(.floral-shloka):not(.floral-venue-date) {
+  font: 300 15px / 1.75 var(--body);
+  max-width: 520px;
+  margin: 0 auto;
+  color: rgba(60, 30, 36, 0.85);
+  -webkit-text-fill-color: initial;
+}
+.floral-ornament {
+  font-size: 28px;
+  color: #c88096;
+  margin-top: 34px;
+  letter-spacing: 0.22em;
+}
+
+/* ── SCENE 01 — HERO — Golden Resort Dawn ───────────────────── */
+.floral-intro .floral-stage {
+  background: linear-gradient(180deg, #2a4a3a 0%, #0f2820 100%);
+}
+/* Full-bleed hero image with filmic bloom */
+.floral-hero-image,
+.floral-venue-image {
+  position: absolute;
+  inset: -4%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  will-change: transform;
+}
+.floral-hero-image {
+  background-image: url('/art/floral-resort.webp');
+  filter: brightness(0.72) saturate(1.3) contrast(1.05);
+}
+/* Atmospheric haze overlay */
+.floral-hero-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(10, 25, 20, 0.6) 0%,
+      rgba(10, 35, 25, 0.35) 40%,
+      rgba(20, 50, 40, 0.5) 78%,
+      rgba(10, 25, 18, 0.75) 100%
+    ),
+    radial-gradient(ellipse at 50% 28%, rgba(100, 80, 40, 0.4), transparent 65%);
+}
+/* Intro copy block */
+.floral-intro-copy {
+  position: relative;
+  z-index: 7;
+  margin-top: -18vh;
+  color: #fff8ee;
+  text-shadow: 0 5px 32px rgba(20, 35, 25, 0.75);
+}
+/* Sacred Ganesh icon group */
+.floral-ganesh {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.floral-ganesh svg { color: #f8e4c0; }
+.floral-ganesh span {
+  font: 400 14px 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.08em;
+  color: rgba(248, 230, 190, 0.9);
+}
+.floral-overline {
+  font: 700 9px var(--body) !important;
+  letter-spacing: 0.34em;
+  margin-bottom: 14px;
+  color: rgba(248, 230, 190, 0.85);
+  -webkit-text-fill-color: initial;
+}
+/* Giant script names hero */
+.floral-hero-copy h1,
+.floral-title {
+  font: 400 clamp(110px, 14vw, 235px) / 1 var(--script);
+  margin: 0;
+  white-space: nowrap;
+  color: #fff4da;
+  -webkit-text-fill-color: #fff4da;
+  filter: drop-shadow(0 4px 20px rgba(240, 150, 80, 0.4));
+}
+.floral-title span {
+  font: 400 0.52em var(--head);
+  color: rgba(255, 220, 180, 0.9);
+  letter-spacing: -0.04em;
+  margin: 0 8px;
+}
+.floral-subtitle {
+  font: 400 clamp(16px, 1.5vw, 24px) var(--script);
+  margin: 6px auto 14px;
+  color: rgba(255, 240, 200, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.floral-date-badge {
+  display: inline-block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.28em;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 10px 24px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  margin-top: 20px;
+}
+.floral-story-marker {
+  font-size: 20px;
+  color: var(--rose);
+  margin: 10px 0;
+}
+.botanical-divider,
+.card-botanical-tag {
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--rose);
+  margin: 14px auto 0;
+  opacity: 0.85;
+}
+.floral-lineage {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font: 400 15px var(--head);
+  color: #6a3240;
+  margin-bottom: 16px;
+  border-left: 2px solid var(--rose);
+  padding-left: 14px;
+  text-align: left;
+}
+.floral-lineage strong {
+  font-size: 18px;
+  color: #3a1820;
+}
+.floral-couple-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.floral-couple-bride,
+.floral-couple-groom {
+  position: absolute;
+  bottom: -4%;
+  height: 78%;
+  width: 48%;
+  display: flex;
+  align-items: flex-end;
+}
+.floral-couple-bride {
+  left: -8%;
+}
+.floral-couple-groom {
+  right: -8%;
+}
+.union-sub {
+  font: 400 24px var(--script);
+  color: var(--rose);
+  margin-top: 14px;
+}
+.floral-venue-address {
+  font: 300 15px var(--body);
+  color: rgba(255, 240, 230, 0.9);
+  margin: 8px auto 26px;
+}
+.flower-spin {
+  animation: spinFlower 10s linear infinite;
+}
+@keyframes spinFlower {
+  100% { transform: rotate(360deg); }
+}
+.wreath-halo {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 2px dashed rgba(220, 120, 150, 0.5);
+  pointer-events: none;
+  animation: rotateWreath 30s linear infinite;
+}
+@keyframes rotateWreath {
+  100% { transform: rotate(360deg); }
+}
+.floral-sunbeam-rays {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 245, 200, 0.4) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+}
+.floral-actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 24px auto 16px;
+  max-width: 600px;
+}
+.btn-floral-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d63031, #e17055);
+  color: #fff;
+  font: 700 0.8rem var(--body);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(214, 48, 49, 0.35);
+  transition: all 0.3s ease;
+}
+.btn-floral-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(214, 48, 49, 0.5);
+}
+.btn-floral-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(184, 106, 113, 0.4);
+  color: #613b42;
+  font: 600 0.8rem var(--body);
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-floral-secondary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.floral-intro-copy > p:nth-of-type(2) {
+  font: 400 clamp(16px, 1.5vw, 24px) var(--script);
+  margin: 4px auto;
+  color: rgba(255, 240, 200, 0.85);
+  -webkit-text-fill-color: initial;
+}
+/* Decorative rule */
+.floral-hero-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  color: rgba(255, 220, 190, 0.75);
+  margin: 16px 0;
+}
+.floral-hero-line span {
+  height: 1px;
+  width: 65px;
+  background: currentColor;
+}
+.floral-intro-copy > strong {
+  display: block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.3em;
+  margin-top: 24px;
+  color: rgba(255, 220, 180, 0.7);
+  -webkit-text-fill-color: initial;
+}
+.floral-intro .scroll-hint { color: rgba(255, 240, 200, 0.75); z-index: 12; }
+
+/* ── Monarch Butterfly Unit ─────────────────────────────────── */
+.floral-butterfly {
+  position: absolute;
+  width: 50px; height: 40px;
+  z-index: 8;
+  animation: butterflyFloat 11s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(180, 100, 60, 0.4));
+}
+.floral-butterfly.butter-1 { left: 14%; top: 26%; }
+.floral-butterfly.butter-2 { right: 12%; top: 38%; animation-delay: -4s; }
+.floral-butterfly.butter-3 { right: 13%; top: 18%; animation-delay: -3s; }
+
+@keyframes butterflyFloat {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -35px) rotate(12deg); }
+  50% { transform: translate(60px, -50px) rotate(-8deg); }
+  75% { transform: translate(40px, -20px) rotate(15deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Monarch Butterfly Wing Structure */
+.monarch-butterfly-unit {
+  position: relative;
+  width: 60px; height: 50px;
+  animation: monarchFloat 8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(150, 80, 30, 0.5));
+}
+@keyframes monarchFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(5deg); }
+  66% { transform: translateY(-8px) rotate(-3deg); }
+}
+
+.butterfly-body {
+  position: absolute;
+  left: 50%; top: 10%;
+  transform: translateX(-50%);
+  width: 6px; height: 70%;
+  background: linear-gradient(180deg, #2a1808, #4a2810);
+  border-radius: 50%;
+  z-index: 3;
+}
+.butterfly-body::before,
+.butterfly-body::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #1a0808;
+  left: 50%; transform: translateX(-50%);
+}
+.butterfly-body::before { top: -6px; }
+.butterfly-body::after { width: 7px; height: 7px; bottom: -4px; }
+
+.wing {
+  position: absolute;
+  top: 5%;
+  width: 46%;
+  height: 90%;
+  border-radius: 60% 15% 55% 25%;
+  background:
+    radial-gradient(ellipse at 30% 25%, #fff3a8, #f5a830 35%, #e06818 65%, #2a0808 100%);
+  transform-origin: center right;
+  animation: wingFlapL 0.4s ease-in-out infinite alternate;
+  overflow: hidden;
+}
+.wing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0px 8px, rgba(0,0,0,0.12) 9px 10px);
+}
+/* Wing spot markings */
+.wing::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  top: 15%; right: 10%;
+}
+.wing-left {
+  left: 2%;
+  transform-origin: center right;
+  animation: wingFlapL 0.4s ease-in-out infinite alternate;
+}
+.wing-right {
+  right: 2%;
+  transform: scaleX(-1);
+  transform-origin: center left;
+  animation: wingFlapR 0.4s ease-in-out infinite alternate;
+  animation-delay: 0.05s;
+}
+@keyframes wingFlapL {
+  to { transform: rotateY(55deg) scaleY(0.85); }
+}
+@keyframes wingFlapR {
+  to { transform: scaleX(-1) rotateY(55deg) scaleY(0.85); }
+}
+
+/* Butterfly landing sizes */
+.butterfly-1 .wing { width: 50%; }
+.butterfly-2 { opacity: 0.9; }
+.butterfly-3 .monarch-butterfly-unit { transform: scale(0.75); }
+
+/* ── SCENE 02 — MORNING — Sunrise ────────────────────────────── */
+.floral-morning .floral-stage {
+  background:
+    linear-gradient(180deg,
+      #f8d8c0 0%,
+      #fff8e4 55%,
+      #d4ddb0 100%
+    );
+}
+/* Soft sunrise sun disc */
+.floral-morning-sun {
+  position: absolute;
+  left: 50%; top: 7%;
+  transform: translateX(-50%);
+  width: min(58vw, 640px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle,
+      #fffde8 0%,
+      rgba(255, 248, 210, 0.85) 35%,
+      rgba(255, 230, 185, 0.4) 60%,
+      transparent 70%
+    );
+  animation: sunrise 8s ease-in-out infinite alternate;
+}
+@keyframes sunrise {
+  to { transform: translateX(-50%) scale(1.06); opacity: 0.85; }
+}
+/* Sun rays (rotating conic gradient) */
+.floral-morning-sun::before {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      rgba(255, 220, 140, 0.0) 0deg,
+      rgba(255, 220, 140, 0.15) 10deg,
+      rgba(255, 220, 140, 0.0) 20deg,
+      rgba(255, 220, 140, 0.0) 30deg,
+      rgba(255, 220, 140, 0.12) 40deg,
+      rgba(255, 220, 140, 0.0) 50deg,
+      rgba(255, 220, 140, 0.0) 60deg,
+      rgba(255, 220, 140, 0.14) 70deg,
+      rgba(255, 220, 140, 0.0) 80deg
+    );
+  animation: sunRays 25s linear infinite;
+}
+@keyframes sunRays { to { transform: rotate(360deg); } }
+
+/* Drifting clouds */
+.floral-morning-cloud {
+  position: absolute;
+  width: 320px; height: 110px;
+  background: rgba(255, 248, 230, 0.8);
+  filter: blur(24px);
+  border-radius: 50%;
+  animation: cloudDrift 26s linear infinite;
+}
+.floral-morning-cloud.a { left: -8%; top: 22%; }
+.floral-morning-cloud.b { right: -5%; top: 36%; animation-delay: -9s; }
+@keyframes cloudDrift { to { transform: translateX(120px); } }
+
+/* Meadow ground */
+.floral-meadow {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 25%;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(100, 150, 90, 0.5) 60%,
+      rgba(70, 110, 65, 0.7) 100%
+    );
+  clip-path: ellipse(93% 68% at 50% 100%);
+}
+/* Scene background texture */
+.floral-morning .floral-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/art/floral-daybreak.webp') center / cover;
+  opacity: 0.28;
+  filter: saturate(0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+.floral-morning-copy > svg { color: #c06856; display: block; margin: 26px auto 8px; }
+.floral-shloka {
+  font: 400 15px 'Cormorant Garamond', Georgia, serif !important;
+  color: #9a6050;
+  -webkit-text-fill-color: initial !important;
+}
+
+/* ── SCENE 03 — PATH — Garden Trail ──────────────────────────── */
+.floral-path .floral-stage {
+  background:
+    linear-gradient(180deg,
+      #f8d8d0 0%,
+      #faeadc 55%,
+      #d8d4aa 100%
+    );
+}
+.floral-path-ground {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 52%;
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(255, 220, 185, 0.8) 0%, rgba(210, 185, 150, 0.5) 40%, transparent 70%);
+}
+/* Arch gateway */
+.floral-path-arch {
+  position: absolute;
+  top: 10%;
+  width: min(82vw, 870px);
+  height: 93%;
+  border: 22px solid rgba(255, 240, 220, 0.9);
+  border-bottom: 0;
+  border-radius: 55% 55% 0 0 / 36% 36% 0 0;
+  box-shadow:
+    0 0 0 4px rgba(220, 180, 140, 0.4),
+    inset 0 0 90px rgba(255, 210, 170, 0.5);
+}
+.floral-path-copy { margin-top: -16vh; }
+.floral-path-copy h2 { font-size: clamp(66px, 8.2vw, 124px); }
+.floral-path-butterfly {
+  position: absolute;
+  z-index: 9;
+  top: 48%; left: 40%;
+  font-size: 48px;
+  filter: drop-shadow(0 10px 14px rgba(170, 80, 100, 0.7));
+  animation: pathButterfly 5s ease-in-out infinite;
+}
+@keyframes pathButterfly {
+  0%, 100% { transform: translate(0, 0) rotate(-5deg); }
+  50% { transform: translate(30px, -50px) rotate(10deg); }
+}
+
+.floral-path .floral-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/art/garden.svg') center 58% / cover;
+  opacity: 0.32;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Floral Vine System ─────────────────────────────────────── */
+.floral-vine {
+  position: absolute;
+  z-index: 5;
+  bottom: 0; left: 4%;
+  width: 18%; height: 100%;
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+.floral-vine.right { left: auto; right: 4%; transform: scaleX(-1); }
+.floral-vine-stem {
+  position: absolute;
+  bottom: -4%; left: 42%;
+  width: 11px; height: 95%;
+  border-left: 8px solid #4e7850;
+  border-radius: 50%;
+  transform: rotate(16deg);
+  filter: drop-shadow(0 0 5px rgba(60, 100, 60, 0.4));
+}
+.floral-vine .floral-flower {
+  position: absolute;
+  left: 24%;
+  bottom: calc(9% + var(--delay, 0s) * 48px);
+  transform: scale(0.72);
+}
+/* Flower bloom component */
+.floral-flower {
+  width: 44px; height: 44px;
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  filter: drop-shadow(0 5px 5px rgba(150, 90, 100, 0.45));
+  animation: flowerBob 5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.floral-flower.large {
+  position: absolute;
+  z-index: 8;
+  right: 7%; bottom: 11%;
+  transform: scale(1.72);
+}
+.floral-flower i {
+  position: absolute;
+  left: 32%; top: 1%;
+  width: 36%; height: 54%;
+  border-radius: 68% 68% 44% 44%;
+  background: linear-gradient(180deg, #fff8dc, #f090b0);
+  transform-origin: 50% 93%;
+}
+.floral-flower i:nth-child(1) { transform: rotate(0deg); }
+.floral-flower i:nth-child(2) { transform: rotate(72deg); }
+.floral-flower i:nth-child(3) { transform: rotate(144deg); }
+.floral-flower i:nth-child(4) { transform: rotate(216deg); }
+.floral-flower i:nth-child(5) { transform: rotate(288deg); }
+.floral-flower b {
+  position: absolute;
+  left: 42%; top: 42%;
+  width: 18%; height: 18%;
+  border-radius: 50%;
+  background: #e8b050;
+  box-shadow: 0 0 6px rgba(230, 170, 60, 0.6);
+}
+@keyframes flowerBob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+/* ── SCENE 04 — PETAL RAIN ───────────────────────────────────── */
+.floral-petal-rain .floral-stage {
+  background:
+    radial-gradient(circle at 50% 46%, #fff4e8 0%, #f0c0cc 55%, #d898a8 100%);
+}
+.floral-arch-outline {
+  position: absolute;
+  inset: 9% 18%;
+  border: 1.5px solid rgba(185, 100, 120, 0.6);
+  border-radius: 56% 56% 0 0 / 30% 30% 0 0;
+  box-shadow:
+    0 0 0 22px rgba(240, 185, 200, 0.2),
+    0 0 0 40px rgba(255, 220, 230, 0.12);
+}
+.floral-petal-copy h2 { font-size: clamp(74px, 9.2vw, 148px); }
+.floral-petal-rain .petal-field { z-index: 4; }
+
+/* ── SCENES 05 & 06 — BRIDE & GROOM PORTRAITS ───────────────── */
+.floral-bride .floral-stage,
+.floral-groom .floral-stage {
+  background:
+    radial-gradient(ellipse at center, #fff0e4 0%, #f0c5c8 60%, #e0a8b0 100%);
+}
+/* Portrait circle arch */
+.floral-portrait-circle {
+  position: absolute;
+  top: 15%; left: 7%;
+  width: 58vw; height: 86vh;
+  border-radius: 56% 56% 0 0 / 30% 30% 0 0;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 248, 230, 0.75), rgba(255, 255, 255, 0.1));
+  border: 1.5px solid rgba(205, 148, 158, 0.65);
+  box-shadow:
+    0 0 0 20px rgba(255, 240, 240, 0.4),
+    inset 0 0 60px rgba(255, 220, 215, 0.3);
+}
+/* Portrait figures */
+.floral-portrait-bride,
+.floral-portrait-groom {
+  height: 89%; width: 48%;
+  position: absolute;
+  left: 5%; bottom: -2%;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+}
+.floral-portrait-bride img,
+.floral-portrait-groom img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter:
+    drop-shadow(0 12px 30px rgba(140, 70, 80, 0.5))
+    drop-shadow(0 0 20px rgba(240, 180, 190, 0.2));
+}
+/* Text block */
+.floral-portrait-text {
+  position: absolute;
+  right: 7%; width: 38%;
+  text-align: left;
+  top: 50%; transform: translateY(-50%);
+}
+.floral-portrait-text h2 { font-size: clamp(66px, 7.4vw, 120px); }
+.floral-portrait-text h2 em { font-size: 1.22em; }
+.floral-portrait-text > p {
+  font: 400 clamp(20px, 2vw, 28px) / 1.5 var(--head) !important;
+  margin: 0 !important;
+  color: rgba(50, 20, 28, 0.85);
+  -webkit-text-fill-color: initial;
+}
+.floral-portrait-text > p strong { font-weight: 500; }
+.floral-portrait-sub {
+  margin-top: 32px;
+  font: 400 44px var(--script);
+  color: #a84a68;
+  display: block;
+}
+/* Groom mirrored */
+.floral-groom .floral-portrait-circle { left: auto; right: 7%; }
+.floral-portrait-groom { left: auto; right: 6%; height: 86%; }
+.floral-groom .floral-portrait-text { right: auto; left: 12%; text-align: right; }
+
+/* ── SCENE 07 — UNION ────────────────────────────────────────── */
+.floral-union .floral-stage {
+  background:
+    linear-gradient(180deg,
+      #f5c8cc 0%,
+      #fceee0 55%,
+      #d8ceac 100%
+    );
+}
+/* Rising sun halo */
+.floral-union-sun {
+  position: absolute;
+  width: min(66vw, 720px);
+  aspect-ratio: 1;
+  top: 12%;
+  background:
+    radial-gradient(circle, rgba(255, 253, 230, 0.9) 0%, rgba(255, 245, 210, 0.65) 30%, transparent 70%);
+  border-radius: 50%;
+  animation: unionSun 10s ease-in-out infinite alternate;
+}
+@keyframes unionSun {
+  to { transform: scale(1.08); opacity: 0.75; }
+}
+/* Couple figures */
+.floral-union-bride,
+.floral-union-groom {
+  height: 79%;
+  position: absolute;
+  width: 48%;
+  bottom: -5%;
+  z-index: 4;
+}
+.floral-union-bride { left: -12%; }
+.floral-union-groom { right: -12%; }
+.floral-union-bride img,
+.floral-union-groom img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter:
+    drop-shadow(0 10px 28px rgba(140, 90, 80, 0.5))
+    drop-shadow(0 0 18px rgba(240, 180, 160, 0.15));
+}
+.floral-union-copy {
+  position: absolute;
+  top: 11%; width: 95%;
+}
+.floral-union-copy h2 { font-size: clamp(56px, 6.2vw, 103px); }
+.floral-union-copy h2 em { font-size: 1.28em; }
+.floral-union .petal-field { z-index: 5; }
+
+/* ── SCENE 08 — MANDAP ───────────────────────────────────────── */
+.floral-mandap-section .floral-stage {
+  background:
+    linear-gradient(180deg,
+      #d0dac5 0%,
+      #fce9d8 60%,
+      #c0d0b0 100%
+    );
+}
+.floral-mandap-background {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 250, 220, 0.75), transparent 46%);
+}
+.floral-mandap {
+  position: absolute;
+  bottom: -4%; height: 66%;
+  width: min(720px, 82vw);
+  z-index: 5;
+  transform-origin: bottom center;
+}
+.floral-mandap-halo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 248, 215, 0.8), transparent 70%);
+  filter: blur(22px);
+}
+/* Mandap structural elements */
+.floral-mandap-roof {
+  position: absolute;
+  top: 10%; left: 7%; right: 7%;
+  height: 19%;
+  border: 18px solid rgba(255, 245, 220, 0.95);
+  border-bottom: 0;
+  border-radius: 220px 220px 0 0;
+  box-shadow:
+    inset 0 10px 4px rgba(230, 185, 140, 0.5),
+    0 -12px 24px rgba(255, 250, 220, 0.75);
+}
+.floral-mandap-top {
+  position: absolute;
+  z-index: 4;
+  top: 0; left: 4%; right: 4%;
+  font-size: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #d08090;
+  text-shadow: 0 2px 10px rgba(200, 100, 110, 0.4);
+  animation: toranSway 4s ease-in-out infinite alternate;
+}
+@keyframes toranSway { to { letter-spacing: 3px; } }
+.floral-mandap-post {
+  position: absolute;
+  top: 23%; bottom: 8%;
+  width: 8%;
+  background:
+    linear-gradient(90deg, #e0b0a0, #fff4e0 44%, #d8a898);
+  border: 1px solid #e8c0a8;
+  box-shadow:
+    inset 0 0 10px rgba(255, 220, 200, 0.4),
+    0 0 20px rgba(240, 180, 140, 0.2);
+}
+.floral-mandap-post.p1 { left: 11%; }
+.floral-mandap-post.p2 { right: 11%; }
+.floral-mandap-drape {
+  position: absolute;
+  top: 25%; bottom: 10%;
+  width: 25%;
+  background:
+    linear-gradient(90deg,
+      rgba(240, 190, 200, 0.8),
+      rgba(255, 248, 230, 0.85),
+      rgba(240, 185, 195, 0.75)
+    );
+  clip-path: polygon(0 0, 100% 0, 72% 100%, 20% 100%);
+  filter: drop-shadow(2px 0 12px rgba(0,0,0,0.15));
+}
+.floral-mandap-drape.d1 { left: 18%; }
+.floral-mandap-drape.d2 { right: 18%; transform: scaleX(-1); }
+.floral-mandap-floor {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 14%;
+  border-radius: 55% 55% 0 0;
+  background:
+    linear-gradient(180deg, #f8d8b8, #d8aaa0);
+}
+.floral-mandap .floral-vine { height: 66%; width: 20%; bottom: 0; z-index: 5; }
+.floral-mandap-copy { position: absolute; top: 10%; width: 90%; }
+.floral-mandap-copy h2 { font-size: clamp(60px, 7.2vw, 108px); }
+.floral-mandap-copy h2 em { font-size: 1.21em; }
+
+/* ── SCENE 09 — FAMILY ───────────────────────────────────────── */
+.floral-family .floral-stage {
+  background:
+    radial-gradient(ellipse at center, #fff8f0 0%, #f5dde0 70%);
+}
+.floral-family-heading { position: absolute; top: 12%; width: 100%; }
+.floral-family-heading h2 { font-size: clamp(66px, 7.4vw, 108px); }
+
+.floral-family-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+  width: min(1060px, 84vw);
+  margin-top: 18vh;
+  perspective: 1400px;
+  z-index: 3;
+}
+.floral-family-card {
+  min-height: 315px;
+  flex: 1;
+  border-radius: 180px 180px 10px 10px / 92px 92px 10px 10px;
+  border: 1.5px solid rgba(215, 165, 170, 0.6);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(255, 240, 235, 0.9));
+  box-shadow:
+    0 18px 55px rgba(170, 100, 110, 0.12),
+    0 0 0 1px rgba(255, 230, 225, 0.5);
+  padding: 42px 22px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.floral-family-card:hover { transform: translateY(-8px) scale(1.02); }
+.floral-family-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 180px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 210, 200, 0.6), transparent 70%);
+}
+.floral-family-card > span {
+  font: 700 8px var(--body);
+  letter-spacing: 0.28em;
+  color: #a04060;
+  position: relative;
+  z-index: 1;
+}
+.floral-family-card h3 {
+  font: 400 clamp(72px, 8.2vw, 118px) / 1 var(--script);
+  margin: 18px 0;
+  color: #9c3a60;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(180, 60, 100, 0.3));
+}
+.floral-family-card p {
+  font: 400 clamp(16px, 1.8vw, 23px) / 1.4 var(--head);
+  color: rgba(50, 22, 28, 0.85);
+  position: relative;
+  z-index: 1;
+}
+.floral-family-card .floral-flower {
+  position: absolute;
+  bottom: -6px; right: 28px;
+  transform: scale(0.65);
+}
+.floral-family-bridge { font-size: 48px; color: #d08098; }
+.floral-family-tail {
+  position: absolute;
+  bottom: 13%;
+  font: 400 42px var(--script) !important;
+  color: #a86075;
+}
+
+/* ── SCENE 10 — DATE ─────────────────────────────────────────── */
+.floral-wedding-day .floral-stage {
+  background:
+    radial-gradient(circle at 50% 36%, #fff9e8 0%, #f5c8cc 65%, #e0a8b4 100%);
+}
+.floral-date-orbit {
+  position: absolute;
+  width: min(86vmin, 740px);
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(195, 118, 134, 0.5);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 20px rgba(255, 220, 220, 0.5),
+    0 0 0 44px rgba(252, 234, 224, 0.4);
+  animation: dateBloom 13s ease-in-out infinite;
+}
+@keyframes dateBloom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+.floral-number-25 {
+  font: 400 clamp(215px, 36vw, 500px) / 1 var(--head);
+  letter-spacing: -0.1em;
+  color: rgba(175, 80, 108, 0.65);
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 20px rgba(180, 80, 110, 0.2));
+}
+.floral-day-copy {
+  position: absolute;
+  top: 68%; left: 0; right: 0;
+}
+.floral-day-copy h2 { font-size: clamp(58px, 7vw, 118px); margin: 0 0 8px; }
+.floral-day-copy h2 em { font-size: 1.15em; }
+.floral-day-copy > p { font-size: 12px !important; }
+.floral-day-copy .countdown { font-size: 8px; margin-top: 10px; }
+
+/* ── SCENE 11 — VENUE ────────────────────────────────────────── */
+.floral-venue .floral-stage { background: #a8bdb4; }
+.floral-venue-image {
+  background-image: url('/art/floral-resort.webp');
+  filter: brightness(0.6) saturate(1.2);
+}
+.floral-venue-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg,
+      rgba(240, 200, 185, 0.2) 0%,
+      rgba(15, 55, 50, 0.65) 35%,
+      rgba(28, 48, 44, 0.78) 75%,
+      rgba(18, 38, 36, 0.88) 100%
+    );
+}
+.floral-venue-copy { color: #fff8ea; text-shadow: 0 4px 32px rgba(10, 30, 25, 0.8); }
+.floral-venue-copy .floral-minilabel {
+  color: rgba(255, 220, 215, 0.9);
+  -webkit-text-fill-color: initial;
+}
+.floral-venue-copy h2 { font-size: clamp(58px, 7.1vw, 115px); -webkit-text-fill-color: #fff; }
+.floral-venue-copy h2 em {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #ffd4dc, #ffb8c8);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.floral-venue-date {
+  font: 700 8px var(--body);
+  letter-spacing: 0.3em;
+  margin: 6px auto 22px;
+  -webkit-text-fill-color: rgba(255, 230, 225, 0.85);
+}
+.floral-venue-copy h3 {
+  font: 400 clamp(44px, 4.6vw, 76px) var(--head);
+  margin: 22px auto 0;
+  -webkit-text-fill-color: #fff4e8;
+}
+.floral-venue-copy > p:not(.floral-venue-date) {
+  font-size: 14px;
+  margin: 10px auto 28px;
+  -webkit-text-fill-color: rgba(240, 220, 200, 0.85);
+}
+.floral-venue .floral-reveal .action-bar { margin: 0 auto; }
+.floral-bless-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid rgba(255, 220, 215, 0.4);
+  border-radius: 2px;
+  color: rgba(255, 224, 218, 0.9);
+  font: 700 9px var(--body);
+  letter-spacing: 0.2em;
+  padding: 14px 20px;
+  margin-top: 16px;
+  transition: 0.3s;
+}
+.floral-bless-button:hover {
+  background: rgba(255, 200, 190, 0.15);
+  border-color: rgba(255, 180, 170, 0.6);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.floral-footer {
+  background:
+    linear-gradient(180deg, #f7d8de, #f0c8d0);
+  text-align: center;
+  color: #804050;
+  font: 400 50px var(--script);
+  padding: 52px 28px;
+}
+.floral-footer span { font: 400 22px 'Cormorant Garamond', Georgia, serif; padding: 0 18px; opacity: 0.75; }
+.floral-footer small {
+  display: block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.24em;
+  margin-top: 12px;
+  color: rgba(140, 70, 85, 0.7);
+}
+.floral-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font: 700 9px var(--body);
+  letter-spacing: 0.16em;
+  margin-top: 30px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.floral-footer a:hover { opacity: 1; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 950px) {
+  .floral-stage { min-height: 0; }
+  .floral-section { height: 140vh; }
+  .floral-portrait-bride, .floral-portrait-groom { height: 74%; width: 58%; }
+  .floral-portrait-text { right: 3%; width: 43%; }
+  .floral-groom .floral-portrait-text { left: 5%; }
+  .floral-intro-copy h1 { font-size: 15.5vw; }
+  .floral-world h2 { font-size: clamp(62px, 9.5vw, 94px); }
+  .floral-world h2 em { font-size: clamp(76px, 13.5vw, 128px); }
+  .floral-family-cards { width: min(94vw, 860px); }
+  .floral-mandap { width: 90vw; }
+}
+@media (max-width: 640px) {
+  .floral-section { height: 128vh; }
+  .floral-stage { height: 100dvh; }
+  .floral-world h2 { font-size: clamp(44px, 11.5vw, 70px); }
+  .floral-world h2 em { font-size: clamp(60px, 15.5vw, 94px); }
+  .floral-minilabel { font-size: 7px; letter-spacing: 0.16em; margin-bottom: 16px; }
+  .floral-hero-image { background-position: 54% center; }
+  .floral-intro-copy { margin-top: -16vh; width: 97%; }
+  .floral-intro-copy h1 { font-size: clamp(72px, 18vw, 112px); white-space: nowrap; letter-spacing: -0.03em; }
+  .floral-portrait-circle { left: -18%; width: 92vw; height: 73vh; top: 24%; }
+  .floral-portrait-bride { left: -29%; width: 84%; height: 63%; bottom: 0; }
+  .floral-portrait-groom { right: -25%; width: 80%; height: 62%; bottom: 0; }
+  .floral-portrait-text { right: 4%; top: 29%; width: 63%; text-align: center; }
+  .floral-groom .floral-portrait-text { left: 0; top: 29%; width: 65%; text-align: center; }
+  .floral-union-bride, .floral-union-groom { height: 56%; width: 75%; bottom: -2%; }
+  .floral-union-bride { left: -27%; }
+  .floral-union-groom { right: -26%; }
+  .floral-mandap { width: 102vw; height: 50%; bottom: -3%; }
+  .floral-family-cards { width: 95%; flex-direction: column; gap: 12px; margin-top: 26vh; }
+  .floral-family-card { width: 88%; min-height: 158px; padding: 14px; border-radius: 100px 100px 7px 7px / 48px 48px 7px 7px; }
+  .floral-number-25 { font-size: clamp(210px, 55vw, 320px); }
+  .floral-footer { font-size: 38px; }
+}

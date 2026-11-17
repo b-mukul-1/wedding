@@ -1,0 +1,1236 @@
+/* ============================================================
+   THE LIVING LETTER — Couture Editorial Wedding Invitation
+   Hermès / Sabyasachi Luxury · Italian Cotton Parchment · Oxblood Wax Seal
+   ============================================================ */
+
+/* ── Custom Properties ─────────────────────────────────────── */
+.letter-world {
+  --ink: #3b1d18;
+  --ink-deep: #220f0c;
+  --rust: #8a3426;
+  --rust-light: #ab4838;
+  --oxblood: #6b1814;
+  --gold-leaf: #cda250;
+  --gold-soft: #dfbe78;
+  --gold-tint: rgba(205, 162, 80, 0.15);
+  --paper-cream: #faf5eb;
+  --paper-deckle: #f2e7d5;
+  --paper-shadow: rgba(60, 30, 20, 0.14);
+  background: var(--paper-cream);
+  color: var(--ink);
+  font-family: var(--head);
+  overflow: clip;
+  position: relative;
+  isolation: isolate;
+}
+
+.letter-world main {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Tactile Canvas Grain Texture ───────────────────────────── */
+.letter-canvas-grain {
+  pointer-events: none;
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  opacity: 0.35;
+  background-image: url('/art/paper.webp');
+  background-size: 800px 560px;
+  mix-blend-mode: multiply;
+}
+
+/* ── Luxury Deckle-Edge Folio Scaffold ──────────────────────── */
+.letter-folio {
+  position: relative;
+  min-height: 125vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 130px max(8vw, 36px) 90px;
+  isolation: isolate;
+  background: var(--paper-cream);
+  transition: background 0.8s ease;
+}
+
+.letter-folio:nth-child(even) {
+  background: #f4ecde;
+}
+
+/* Gold filigree fine perimeter box */
+.letter-folio::before {
+  content: '';
+  position: absolute;
+  inset: 32px;
+  border: 1px solid rgba(180, 135, 95, 0.3);
+  box-shadow: inset 0 0 80px rgba(220, 195, 165, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner decorative corner accents */
+.letter-folio::after {
+  content: '✦';
+  position: absolute;
+  top: 38px;
+  right: 42px;
+  font-size: 13px;
+  color: var(--gold-leaf);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle deckle-edge torn paper effect at folio boundaries */
+.folio-deckle-edge {
+  position: absolute;
+  left: 0; right: 0;
+  height: 16px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.45;
+}
+.folio-deckle-edge.top {
+  top: 0;
+  background: radial-gradient(circle at 10px 0, transparent 8px, rgba(160, 120, 80, 0.2) 9px);
+  background-size: 20px 16px;
+}
+.folio-deckle-edge.bottom {
+  bottom: 0;
+  background: radial-gradient(circle at 10px 16px, transparent 8px, rgba(160, 120, 80, 0.2) 9px);
+  background-size: 20px 16px;
+}
+
+.folio-inner {
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Watermark in background of folio */
+.folio-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  font: 700 clamp(36px, 5.5vw, 76px) var(--head);
+  letter-spacing: 0.35em;
+  color: rgba(185, 145, 110, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Editorial Folio Pagination */
+.letter-page-number {
+  position: absolute;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: min(1180px, calc(100% - 100px));
+  font: 600 9px var(--body);
+  letter-spacing: 0.32em;
+  color: #9a7658;
+  z-index: 10;
+  border-bottom: 1px solid rgba(180, 140, 100, 0.2);
+  padding-bottom: 10px;
+}
+.letter-page-number span {
+  opacity: 0.6;
+  letter-spacing: 0.15em;
+}
+
+/* Micro badges & labels */
+.letter-mini-label {
+  font: 700 9px var(--body);
+  letter-spacing: 0.32em;
+  color: var(--rust);
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+/* ── Typography & Headings ──────────────────────────────────── */
+.letter-folio h2 {
+  font: 400 clamp(62px, 7.8vw, 130px) / 1.02 var(--head);
+  letter-spacing: -0.065em;
+  color: var(--ink-deep);
+  margin: 0;
+}
+.letter-folio h2 em {
+  font-family: var(--script);
+  font-size: 1.28em;
+  font-weight: 400;
+  color: var(--rust);
+  display: inline-block;
+  vertical-align: baseline;
+  filter: drop-shadow(0 2px 8px rgba(138, 52, 38, 0.18));
+}
+.letter-folio p {
+  color: inherit;
+}
+
+/* ── FOLIO 1: THE COUTURE ENVELOPE (HERO) ────────────────────── */
+.letter-first {
+  background: radial-gradient(ellipse at 50% 30%, #fef9f0 0%, #f4e9db 75%);
+  min-height: 160vh;
+  justify-content: flex-start;
+  padding-top: clamp(140px, 16vh, 210px);
+}
+.letter-first::before {
+  inset: 38px;
+  border: 1.5px solid rgba(185, 140, 95, 0.4);
+}
+
+.letter-deck {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.deck-line {
+  width: 42px;
+  height: 1px;
+  background: var(--gold-leaf);
+  opacity: 0.7;
+}
+.deck-tag {
+  font: 700 9px var(--body);
+  letter-spacing: 0.34em;
+  color: var(--rust);
+}
+
+.letter-hero-type {
+  position: relative;
+  z-index: 4;
+  margin-bottom: 10px;
+}
+.letter-salutation {
+  font: 400 clamp(26px, 2.8vw, 42px) var(--script);
+  color: var(--rust);
+  margin: 0 0 12px;
+}
+.letter-hero-title {
+  font: 400 clamp(54px, 6.2vw, 108px) / 1 var(--head);
+  letter-spacing: -0.06em;
+  color: var(--ink-deep);
+  margin: 0 auto;
+  max-width: 980px;
+}
+.letter-hero-title em {
+  font-family: var(--script);
+  font-size: 1.25em;
+  color: var(--rust);
+  font-weight: 400;
+}
+
+/* ── 3D Envelope Presentation ────────────────────────────────── */
+.envelope-stage-container {
+  width: 100%;
+  max-width: 660px;
+  height: 400px;
+  margin: 36px auto 20px;
+  perspective: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.couture-envelope {
+  position: relative;
+  width: 92%;
+  height: 84%;
+  background: linear-gradient(145deg, #fbf2e3 0%, #eedbc1 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(195, 155, 115, 0.45);
+  box-shadow:
+    0 30px 65px rgba(85, 45, 30, 0.28),
+    0 10px 25px rgba(85, 45, 30, 0.12),
+    inset 0 0 0 12px rgba(255, 250, 240, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s ease;
+}
+
+.couture-envelope:hover {
+  transform: translateY(-6px) rotateX(4deg);
+  box-shadow:
+    0 40px 85px rgba(85, 45, 30, 0.35),
+    0 15px 35px rgba(85, 45, 30, 0.16);
+}
+
+.couture-envelope.seal-broken {
+  box-shadow:
+    0 35px 75px rgba(85, 45, 30, 0.22),
+    0 0 0 2px var(--gold-leaf);
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0px 24px,
+      rgba(190, 150, 110, 0.05) 25px 26px
+    );
+  pointer-events: none;
+}
+
+.envelope-address-plate {
+  text-align: center;
+  z-index: 2;
+  padding: 30px 20px;
+}
+.address-pre {
+  display: block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.32em;
+  color: #9c6c5e;
+  margin-bottom: 12px;
+}
+.address-guest {
+  display: block;
+  font: 400 clamp(24px, 2.6vw, 36px) var(--head);
+  letter-spacing: 0.06em;
+  color: var(--oxblood);
+  margin-bottom: 8px;
+}
+.address-rsvp {
+  font: 400 22px var(--script);
+  color: #9a483a;
+  display: block;
+}
+
+/* 3D Envelope Flap */
+.envelope-flap-3d {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 68%;
+  background: linear-gradient(180deg, #dfc29f 0%, #f6e8d4 90%);
+  clip-path: polygon(0 0, 100% 0, 50% 98%);
+  transform-origin: top center;
+  z-index: 4;
+  box-shadow: 0 12px 18px rgba(80, 45, 30, 0.18);
+  pointer-events: none;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.envelope-flap-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 49.5%, rgba(160, 120, 80, 0.3) 50%, transparent 50.5%);
+}
+
+/* ── Realistic Oxblood & Gold Wax Seal ───────────────────────── */
+.wax-seal-3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 98px;
+  height: 98px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #be283e 0%, #8b1828 50%, #460912 100%);
+  box-shadow:
+    0 16px 36px rgba(70, 10, 20, 0.6),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -5px 10px rgba(0, 0, 0, 0.6),
+    0 0 0 3px rgba(139, 24, 40, 0.3);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.wax-seal-3d:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow:
+    0 22px 48px rgba(70, 10, 20, 0.75),
+    0 0 25px rgba(240, 192, 96, 0.4),
+    inset 0 0 14px rgba(255, 215, 80, 0.5);
+}
+
+.wax-rim {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 220, 120, 0.5);
+  pointer-events: none;
+}
+
+.wax-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+}
+
+.wax-monogram {
+  font: 700 22px var(--head);
+  letter-spacing: 0.08em;
+  color: #ffd76a;
+}
+.wax-monogram span {
+  font-size: 11px;
+  color: #fff;
+  margin: 0 3px;
+}
+.wax-date {
+  font: 700 8px var(--body);
+  letter-spacing: 0.26em;
+  color: rgba(255, 240, 190, 0.85);
+  margin-top: -2px;
+}
+
+.seal-tap-hint {
+  position: absolute;
+  bottom: -32px;
+  white-space: nowrap;
+  font: 700 8px var(--body);
+  letter-spacing: 0.22em;
+  color: var(--oxblood);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(180, 100, 80, 0.3);
+  padding: 4px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(80, 20, 20, 0.15);
+  animation: pulseHint 2s infinite ease-in-out;
+}
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.85; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); box-shadow: 0 6px 16px rgba(80, 20, 20, 0.25); }
+}
+
+.wax-seal-3d.broken {
+  transform: translate(-50%, -50%) scale(0.92);
+  opacity: 0.45;
+  filter: grayscale(0.2);
+  pointer-events: none;
+}
+
+/* ── FOLIO 2: SACRED BLESSING ────────────────────────────────── */
+.letter-seal-scene {
+  background: radial-gradient(ellipse at 50% 48%, #fffaf2 0%, #efe2cf 85%) !important;
+  min-height: 150vh;
+}
+
+.sacred-parchment-sheet {
+  background: #fdfaf3;
+  border: 1.5px solid #d4c0a5;
+  box-shadow:
+    0 30px 75px rgba(90, 60, 40, 0.18),
+    inset 0 0 60px rgba(220, 190, 150, 0.2);
+  border-radius: 8px;
+  padding: 68px 50px;
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.sacred-parchment-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(195, 155, 115, 0.35);
+  pointer-events: none;
+}
+
+.sheet-flourish {
+  color: var(--rust);
+  font-size: 14px;
+  letter-spacing: 0.35em;
+  margin-bottom: 22px;
+}
+.sheet-shloka {
+  font: 400 20px / 1.6 'Cormorant Garamond', Georgia, serif;
+  color: var(--oxblood);
+  margin: 16px 0 10px;
+}
+.sheet-heading {
+  font: 400 clamp(48px, 5.5vw, 84px) / 1.05 var(--head);
+  color: var(--ink-deep);
+  margin: 14px 0 24px;
+}
+.sheet-text {
+  font: 400 clamp(16px, 1.4vw, 20px) / 1.75 'Cormorant Garamond', Georgia, serif;
+  color: #634338;
+  max-width: 520px;
+  margin: 0 auto 34px;
+}
+.sheet-seal-stamp {
+  display: inline-block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.3em;
+  color: #9c6c5e;
+  border-top: 1px solid rgba(185, 140, 100, 0.4);
+  border-bottom: 1px solid rgba(185, 140, 100, 0.4);
+  padding: 10px 28px;
+}
+
+/* ── FOLIO 3: INTIMATE INVITATION ────────────────────────────── */
+.letter-intro-scene {
+  background: #faf4e8;
+  min-height: 135vh;
+  align-items: flex-start;
+  text-align: left;
+}
+.letter-decor-initial {
+  position: absolute;
+  right: 4%;
+  top: 8%;
+  font: 400 clamp(380px, 45vw, 680px) / 0.8 var(--head);
+  color: rgba(220, 195, 170, 0.22);
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.letter-intro-grid {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 840px);
+  gap: 6vw;
+  position: relative;
+  z-index: 2;
+  align-items: start;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1240px;
+}
+.letter-intro-roman {
+  font: 300 clamp(100px, 11vw, 160px) / 1 var(--head);
+  color: rgba(190, 155, 125, 0.5);
+  letter-spacing: -0.05em;
+}
+
+.editorial-h2 {
+  font: 400 clamp(54px, 6.5vw, 110px) / 1.05 var(--head);
+  letter-spacing: -0.055em;
+  margin: 16px 0 24px;
+  color: var(--ink-deep);
+}
+.editorial-lead {
+  font: 300 clamp(16px, 1.4vw, 20px) / 1.8 var(--body);
+  max-width: 540px;
+  color: #5c4238;
+  margin-bottom: 30px;
+}
+.editorial-rule {
+  width: 180px;
+  height: 1px;
+  background: rgba(180, 140, 100, 0.4);
+  position: relative;
+  margin: 30px 0;
+}
+.rule-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #faf4e8;
+  padding: 0 8px;
+  color: var(--gold-leaf);
+  font-size: 12px;
+}
+
+/* ── FOLIO 4: THE GIANT NAMES ────────────────────────────────── */
+.letter-name-scene {
+  background:
+    radial-gradient(ellipse at 50% 50%, #7e2420 0%, #581412 60%, #360a0a 100%) !important;
+  color: #fff5e8 !important;
+  min-height: 145vh;
+}
+.letter-name-scene::before {
+  border-color: rgba(245, 215, 175, 0.25);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.35);
+}
+.letter-name-kicker {
+  font: 700 10px var(--body);
+  letter-spacing: 0.42em;
+  color: var(--gold-soft);
+  margin-bottom: 24px;
+}
+
+.letter-giant-name {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: clamp(24px, 5vw, 84px);
+  white-space: nowrap;
+  font: 400 clamp(100px, 14vw, 240px) / 1 var(--script);
+  color: #fff4dc;
+  text-shadow: 0 25px 65px rgba(20, 5, 8, 0.7);
+}
+.letter-giant-name .letter-word {
+  display: inline-block;
+  filter: drop-shadow(0 4px 18px rgba(255, 215, 120, 0.25));
+}
+.letter-giant-name .letter-amp {
+  font: 400 0.5em var(--head);
+  color: var(--gold-soft);
+  margin: 0 8px;
+}
+
+.letter-name-caption {
+  width: min(980px, 100%);
+  border-top: 1px solid rgba(245, 215, 175, 0.35);
+  margin-top: 54px;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 600 10px var(--body);
+  letter-spacing: 0.16em;
+  color: rgba(255, 240, 215, 0.85);
+}
+.letter-name-caption span {
+  letter-spacing: 0.24em;
+  color: var(--gold-soft);
+}
+
+/* ── FOLIOS 5 & 6: BRIDE & GROOM COUTURE PLATES ──────────────── */
+.letter-bride-scene,
+.letter-groom-scene {
+  background: #f5ebe0 !important;
+  min-height: 150vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: min(7vw, 100px);
+  padding-left: max(8vw, 48px);
+  padding-right: max(8vw, 48px);
+  align-items: center;
+  text-align: left;
+}
+.letter-groom-scene {
+  background: #faf2e6 !important;
+}
+
+/* Luxury Framed Photographic/Illustration Mat */
+.editorial-figure-card {
+  width: min(480px, 100%);
+  margin: auto;
+  position: relative;
+  padding: 22px 20px 28px;
+  background: #fffcf7;
+  box-shadow:
+    0 35px 75px rgba(80, 50, 35, 0.22),
+    0 10px 25px rgba(80, 50, 35, 0.08),
+    0 0 0 1px rgba(200, 160, 120, 0.4);
+  transform: rotate(-2.5deg);
+  transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s ease;
+}
+.editorial-figure-card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow:
+    0 45px 95px rgba(80, 50, 35, 0.32),
+    0 0 0 1px var(--gold-leaf);
+}
+.letter-figure-groom {
+  transform: rotate(2.5deg);
+}
+.letter-figure-groom:hover {
+  transform: rotate(0deg) translateY(-8px);
+}
+
+.figure-mat-border {
+  height: min(68vh, 620px);
+  min-height: 460px;
+  background:
+    radial-gradient(ellipse at center, #f8e5cb 0%, #caa498 100%);
+  overflow: hidden;
+  position: relative;
+  border-radius: 4px;
+}
+.figure-mat-border::before {
+  content: '';
+  position: absolute;
+  inset: 20px 16px 0;
+  border: 1px solid rgba(255, 248, 235, 0.65);
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.editorial-portrait-bride,
+.editorial-portrait-groom {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.05) drop-shadow(0 15px 30px rgba(40, 20, 15, 0.3));
+}
+
+.figure-caption-tag {
+  display: block;
+  font: 700 8px var(--body);
+  letter-spacing: 0.3em;
+  text-align: center;
+  margin-top: 18px;
+  color: #8c6856;
+}
+
+/* Portrait Narrative Typography */
+.letter-figure-caption {
+  max-width: 500px;
+}
+.editorial-name {
+  font: 400 clamp(68px, 7.8vw, 136px) / 0.95 var(--head);
+  letter-spacing: -0.05em;
+  margin: 16px 0 24px;
+  color: var(--ink-deep);
+}
+.editorial-name em {
+  font-family: var(--script);
+  font-size: 1.25em;
+  color: var(--rust);
+}
+
+.editorial-lineage {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font: 400 15px var(--head);
+  color: #7a5648;
+  margin-bottom: 22px;
+  border-left: 2px solid var(--gold-leaf);
+  padding-left: 16px;
+}
+.editorial-lineage strong {
+  font-size: 18px;
+  color: var(--ink-deep);
+}
+
+.editorial-quote {
+  font: 400 clamp(18px, 1.8vw, 24px) / 1.65 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  color: #5e3f36;
+  margin-bottom: 28px;
+}
+
+/* Red Thread of Destiny SVG */
+.destiny-thread-svg {
+  width: 100%;
+  max-width: 440px;
+  margin-top: 36px;
+  filter: drop-shadow(0 2px 6px rgba(168, 32, 60, 0.3));
+}
+.editorial-signature {
+  font: 400 clamp(28px, 3.5vw, 48px) var(--script);
+  margin-top: 40px;
+  color: #9c6c54;
+}
+
+/* ── FOLIO 7: THE SACRED FAMILIES ────────────────────────────── */
+.letter-families {
+  background: linear-gradient(180deg, #fbf4ea 0%, #efe4d4 100%) !important;
+  min-height: 140vh;
+}
+.letter-families-top h2 {
+  font-size: clamp(65px, 7.8vw, 124px);
+  margin: 16px 0 54px;
+}
+
+.letter-family-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: min(5vw, 60px);
+  width: min(1100px, 100%);
+  perspective: 1200px;
+}
+
+.family-box {
+  width: 44%;
+  min-height: 310px;
+  border: 1px solid rgba(185, 145, 115, 0.6);
+  background: #fffdf9;
+  padding: 42px 28px;
+  box-shadow:
+    0 20px 45px rgba(95, 60, 40, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  position: relative;
+  border-radius: 4px;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+.family-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(95, 60, 40, 0.2);
+}
+.box-role {
+  font: 700 8px var(--body);
+  letter-spacing: 0.28em;
+  color: var(--rust);
+}
+.box-name {
+  font: 400 clamp(68px, 7.5vw, 98px) / 1 var(--script);
+  margin: 18px 0 14px;
+  color: var(--oxblood);
+}
+.box-parents {
+  font: 400 clamp(16px, 1.6vw, 21px) / 1.6 var(--head);
+  color: #5a3d34;
+  margin: 0;
+}
+
+.family-strip-seal {
+  font-size: 32px;
+  color: var(--gold-leaf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-families-end {
+  font: 400 clamp(24px, 2.5vw, 36px) var(--script);
+  color: #8c5d4b;
+  margin-top: 48px;
+}
+
+/* ── FOLIO 8: THE SACRED DATE (25) ───────────────────────────── */
+.letter-date-scene {
+  background: #dfcfbf !important;
+  min-height: 155vh;
+}
+.letter-date-scene::before {
+  border-color: rgba(130, 80, 70, 0.3);
+}
+.letter-date-kicker {
+  font: 700 11px var(--body);
+  letter-spacing: 0.42em;
+  color: var(--oxblood);
+  position: relative;
+  z-index: 2;
+}
+
+.editorial-giant-num {
+  font: 400 clamp(260px, 40vw, 680px) / 0.8 var(--head);
+  letter-spacing: -0.12em;
+  color: #72342b;
+  text-shadow: 0 15px 60px rgba(95, 40, 30, 0.22);
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+}
+
+.letter-date-description {
+  position: relative;
+  z-index: 2;
+  margin-top: -2vh;
+}
+.weekday-text {
+  font: 700 11px var(--body);
+  letter-spacing: 0.4em;
+  color: #8c4235;
+  display: block;
+}
+.month-text {
+  font-size: clamp(62px, 8.2vw, 134px);
+  margin: 6px 0 16px;
+  color: var(--ink-deep);
+}
+.month-text em {
+  font-family: var(--script);
+  font-size: 1.15em;
+  color: var(--rust);
+}
+.date-sub {
+  font: 300 16px var(--body);
+  color: #5c382f;
+  margin-bottom: 18px;
+}
+
+/* ── FOLIO 9: INTIMATE PROMISE ───────────────────────────────── */
+.letter-promise-scene {
+  background: #fbf5eb !important;
+  min-height: 125vh;
+  align-items: stretch;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: left;
+}
+.letter-promise-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(180, 140, 100, 0.35);
+  padding-bottom: 16px;
+}
+.letter-promise-number {
+  font: 400 48px var(--head);
+  color: var(--gold-leaf);
+}
+.letter-promise-main {
+  margin: 6vh 0 8vh;
+  max-width: 1100px;
+}
+.letter-promise-main h2 {
+  font-size: clamp(64px, 7.8vw, 130px);
+  letter-spacing: -0.07em;
+  margin-bottom: 34px;
+}
+.letter-promise-main h2 em {
+  font-size: 0.9em;
+}
+.letter-promise-main p {
+  font: 300 18px / 1.8 var(--body);
+  max-width: 560px;
+  color: #5c4036;
+}
+.letter-small-star {
+  position: absolute;
+  right: 12%; bottom: 12%;
+  font-size: 140px;
+  color: rgba(205, 162, 80, 0.25);
+  pointer-events: none;
+}
+
+/* ── FOLIO 10: VENUE DRAWING & ACTIONS ───────────────────────── */
+.letter-venue-scene {
+  background: #f2e6d8 !important;
+  min-height: 150vh;
+}
+.letter-venue-head h2 {
+  margin: 16px 0 0;
+  font-size: clamp(72px, 8.5vw, 138px);
+}
+
+.letter-venue-drawing {
+  width: min(880px, 92%);
+  max-height: 310px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 24px auto;
+}
+.letter-venue-drawing img {
+  width: 100%;
+  height: auto;
+  opacity: 0.85;
+  filter: sepia(0.4) contrast(1.1);
+}
+
+.letter-venue-info {
+  margin-top: 10px;
+}
+.venue-meta {
+  font: 700 10px var(--body);
+  letter-spacing: 0.28em;
+  color: var(--rust);
+}
+.venue-place {
+  font: 400 clamp(42px, 5.2vw, 68px) var(--head);
+  margin: 12px 0 8px;
+  color: var(--ink-deep);
+}
+.venue-addr {
+  font: 300 16px var(--body);
+  color: #63463c;
+  margin-bottom: 28px;
+}
+
+/* Couture Editorial Action Buttons */
+.editorial-venue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.btn-couture-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 4px;
+  background: var(--oxblood);
+  color: #fff5e8;
+  font: 600 9px var(--body);
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(107, 24, 20, 0.35);
+  transition: all 0.3s ease;
+}
+.btn-couture-primary:hover {
+  background: #8b221c;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(107, 24, 20, 0.5);
+}
+.btn-couture-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(138, 52, 38, 0.5);
+  color: var(--oxblood);
+  font: 600 9px var(--body);
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-couture-secondary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(80, 40, 30, 0.15);
+}
+
+/* ── FOLIO 11: FINAL COUTURE SHEET & BLESSINGS ───────────────── */
+.letter-final-scene {
+  background:
+    radial-gradient(ellipse at 50% 50%, #7c2622 0%, #521310 60%, #300808 100%) !important;
+  color: #fff4e6 !important;
+  min-height: 130vh;
+  align-items: center;
+}
+.letter-final-scene::before {
+  border-color: rgba(255, 215, 175, 0.28);
+}
+
+.letter-end-sheet {
+  border: 1.5px solid rgba(240, 205, 160, 0.55);
+  padding: 70px 55px;
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center, rgba(160, 80, 70, 0.22), transparent 70%);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+}
+.letter-end-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(240, 205, 160, 0.25);
+  pointer-events: none;
+}
+.letter-end-stamp {
+  color: var(--gold-soft);
+  margin-bottom: 20px;
+}
+.letter-end-sheet .letter-mini-label {
+  color: var(--gold-soft);
+  margin: 18px 0;
+}
+.letter-end-sheet h2 {
+  font-size: clamp(62px, 7.5vw, 118px);
+  margin: 10px 0 22px;
+  color: #fff5e8;
+}
+.letter-end-sheet h2 em {
+  color: #ffd89a;
+}
+.closing-quote {
+  font: 300 16px / 1.8 var(--body);
+  max-width: 480px;
+  margin: 0 auto 28px;
+  color: rgba(255, 235, 210, 0.85);
+}
+.closing-couple {
+  display: block;
+  font: 400 clamp(58px, 6.5vw, 84px) var(--script);
+  color: var(--gold-soft);
+  margin-bottom: 32px;
+}
+.closing-couple span {
+  font: 400 32px var(--head);
+  margin: 0 10px;
+}
+
+.letter-blessing-button {
+  background: rgba(255, 215, 150, 0.12);
+  border: 1px solid rgba(255, 215, 150, 0.55);
+  color: #fff5e8;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  border-radius: 4px;
+  font: 700 9px var(--body);
+  letter-spacing: 0.2em;
+  transition: all 0.3s ease;
+}
+.letter-blessing-button:hover {
+  background: rgba(255, 215, 150, 0.25);
+  border-color: #ffd76a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 106, 0.3);
+}
+
+.letter-replay {
+  font: 700 9px var(--body);
+  letter-spacing: 0.24em;
+  margin-top: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 220, 185, 0.75);
+  transition: color 0.2s;
+}
+.letter-replay:hover {
+  color: #fff;
+}
+
+/* ── Responsive Styling ─────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .letter-intro-grid {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 4vw;
+  }
+  .letter-intro-roman { font-size: 110px; }
+  .editorial-figure-card { padding: 14px 14px 22px; }
+  .figure-mat-border { min-height: 380px; }
+  .editorial-name { font-size: clamp(58px, 7vw, 94px); }
+  .letter-giant-name { font-size: 13vw; gap: 18px; }
+  .letter-family-strip { gap: 24px; }
+}
+
+@media (max-width: 680px) {
+  .letter-folio {
+    min-height: 112vh;
+    padding: 100px 24px 60px;
+  }
+  .letter-folio::before { inset: 16px; }
+  .letter-page-number {
+    top: 76px;
+    width: calc(100% - 48px);
+    font-size: 7px;
+    letter-spacing: 0.15em;
+  }
+  .letter-folio h2 { font-size: clamp(48px, 12.5vw, 76px); }
+  .letter-mini-label { font-size: 7px; letter-spacing: 0.2em; }
+  .letter-first { min-height: 140vh; padding-top: 130px; }
+  .letter-salutation { font-size: 28px; }
+  .letter-hero-title { font-size: clamp(44px, 11vw, 70px); }
+
+  .envelope-stage-container {
+    height: 300px;
+    margin-top: 10px;
+  }
+  .couture-envelope { width: 98%; height: 80%; }
+  .address-guest { font-size: 22px; }
+  .address-rsvp { font-size: 18px; }
+  .wax-seal-3d { width: 78px; height: 78px; }
+  .wax-monogram { font-size: 18px; }
+
+  .sacred-parchment-sheet {
+    padding: 44px 20px;
+  }
+  .sheet-heading { font-size: 42px; }
+
+  .letter-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .letter-intro-roman { font-size: 72px; }
+  .editorial-h2 { font-size: clamp(46px, 12vw, 68px); }
+
+  .letter-giant-name {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;
+    font-size: 96px !important;
+    line-height: 0.75 !important;
+    margin: 18px auto 36px;
+  }
+  .letter-giant-name .letter-amp {
+    font-size: 52px !important;
+    margin: 8px 0;
+  }
+  .letter-name-caption {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .letter-bride-scene,
+  .letter-groom-scene {
+    min-height: 135vh;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    padding: 100px 20px 50px;
+    text-align: center;
+  }
+  .letter-groom-scene {
+    flex-direction: column-reverse;
+  }
+  .editorial-figure-card {
+    width: min(340px, 85vw);
+    transform: rotate(0deg);
+  }
+  .figure-mat-border {
+    height: 48vh;
+    min-height: 280px;
+  }
+  .editorial-name {
+    font-size: 54px;
+    margin: 12px auto 6px;
+  }
+  .editorial-lineage {
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: 12px;
+  }
+  .editorial-quote { font-size: 17px; }
+  .destiny-thread-svg { display: none; }
+
+  .letter-family-strip {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .family-box {
+    width: 100%;
+    min-height: 180px;
+    padding: 24px 16px;
+  }
+  .box-name { font-size: 64px; }
+
+  .editorial-giant-num {
+    font-size: clamp(210px, 60vw, 340px);
+  }
+  .month-text { font-size: 52px; }
+
+  .letter-promise-scene {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+  .letter-promise-main h2 {
+    font-size: clamp(48px, 11vw, 68px);
+  }
+
+  .venue-place { font-size: 34px; }
+  .editorial-venue-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .letter-end-sheet {
+    padding: 50px 20px;
+  }
+  .letter-end-sheet h2 { font-size: 52px; }
+  .closing-couple { font-size: 56px; }
+}
